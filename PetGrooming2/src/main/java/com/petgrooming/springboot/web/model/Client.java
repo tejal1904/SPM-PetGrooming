@@ -1,9 +1,12 @@
 package com.petgrooming.springboot.web.model;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -15,7 +18,7 @@ public class Client {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CLIENTID")
-    private int id;
+    private int id = 1;
 	
 	@Size(min=3, max=50)
     @Column(name = "CLIENTNAME", nullable = true)
@@ -25,11 +28,11 @@ public class Client {
     @Column(name = "ADDRESS", nullable = true)
     private String address;
 	
-	@Size(min=3, max=50)
+	//@Size(min=3, max=50)
     @Column(name = "EMAIL", nullable = false)
     private String email;
 	
-	@Size(min=3, max=50)
+	//@Size(min=3, max=50)
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 	
@@ -44,6 +47,19 @@ public class Client {
 	@Size(min=3, max=50)
     @Column(name = "WORKNO", nullable = true)
     private String workNo;
+	
+
+	public Client() {
+		super();
+	}
+	
+
+	public Client(int id) {
+		super();
+		this.id = id;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -178,6 +194,7 @@ public class Client {
 		return "Client [id=" + id + ", name=" + name + ", address=" + address + ", email=" + email + ", password="
 				+ password + ", homePhone=" + homePhone + ", mobile=" + mobile + ", workNo=" + workNo + "]";
 	}
+	
 	
 	
 	

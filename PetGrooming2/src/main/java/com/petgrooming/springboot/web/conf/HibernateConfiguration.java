@@ -56,7 +56,7 @@ public class HibernateConfiguration {
 			.setType(EmbeddedDatabaseType.H2)
 			.setName("petgrooming")
 			.addScript("h2-ddl.sql")
-			//.addScript("db/sql/insert-data.sql")
+			.addScript("insert-dml.sql")
 			.build();
 		return db;
 	}

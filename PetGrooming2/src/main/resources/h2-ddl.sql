@@ -1,6 +1,6 @@
 CREATE TABLE Client (
 	ClientID	SMALLINT,
-	ClientName	VARCHAR(50)	NOT NULL,
+	ClientName	VARCHAR(50),
 	Address 	CHAR(100),
 	Email 	VARCHAR(30),
     Password VARCHAR(20),
@@ -22,7 +22,8 @@ CREATE TABLE ClientDog (
 
 CREATE TABLE GroomingOption (
 	GroomingID	SMALLINT,
-	GroomingType	VARCHAR(20)	NOT NULL,
+	GroomingType	VARCHAR(100)	NOT NULL,
+	Cost DECIMAL,
 	PRIMARY KEY (GroomingID)
 );
 
@@ -40,7 +41,7 @@ CREATE TABLE Days(
 
 CREATE TABLE TimeSlot(
 	TimeSlotID SMALLINT,
-    TimeStart SMALLINT,
+    TimeStart DECIMAL,
     PRIMARY KEY (TimeSlotID)
 );
 
@@ -50,10 +51,11 @@ CREATE TABLE Appointment (
 	GroomingID	SMALLINT	NOT NULL,
 	ClientID	SMALLINT	NOT NULL,
 	DayID	SMALLINT	NOT NULL,
-    TimeSlotID	SMALLINT	NOT NULL,
+    TimeSlotID	SMALLINT,
     DogID SMALLINT	NOT NULL,
-    Comments VARCHAR(100),
+    Comment VARCHAR(200),
     Status BOOLEAN,
+    AppointmentDate DATE,
 	PRIMARY KEY (AppointmentID),
     FOREIGN KEY (ClientID) references Client(ClientID),
     FOREIGN KEY (GroomingID) references GroomingOption(GroomingID),

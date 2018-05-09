@@ -7,5 +7,7 @@ public interface ClientService {
 	boolean isNewClient(Client client);
 
 	void saveNewClient(Client client);
+	
+	public Client findClientById(int id);
 
 }
