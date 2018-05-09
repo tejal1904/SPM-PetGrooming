@@ -25,5 +25,16 @@ public class ClientDaoImpl extends AbstractDao<Integer, Client> implements Clien
 	public void save(Client client) {
 		persist(client);
 	}
+	
+	public Client getClientById(int id) {
+		Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("id", id));
+        List<Client> clientList = criteria.list();
+        if(clientList.isEmpty() || clientList.size() == 0) {
+        	return null;
+        }
+        return clientList.get(0);
+        
+	}
 
 }

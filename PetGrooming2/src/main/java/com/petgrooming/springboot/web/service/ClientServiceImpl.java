@@ -23,4 +23,9 @@ public class ClientServiceImpl implements ClientService {
 	public void saveNewClient(Client client) {
 		clientDAO.save(client);
 	}
+
+	@Override
+	public Client findClientById(int id) {
+		return clientDAO.getClientById(id);
+	}
 }
